@@ -1,0 +1,24 @@
+<scriptr-grid columns-definition='vm.filterCols'
+              api='hycm/api/getFilters'
+              enable-delete-row='true'
+              user='vm.user'
+              admin='admin'
+              pagination="true"
+              row-model-type='infinite'
+              enable-add-row='true'
+              allow-to-edit="true"
+              cell-editable='true'
+              suppress-filter='true'
+              row-height="30"
+              grid-height='calc(100vh - 146px)'
+              enable-client-side-filter='true'
+              enable-col-resize="true"
+              default-cell-renderer="vm.defaultCellRenderer"
+              enable-import="false"
+              enable-server-side-filter='true'
+              enable-client-side-sorting='true'
+              enable-server-side-sorting='true'
+              row-model-selection='multiple'
+              pagination-page-size='50'
+              transport='https'>
+</scriptr-grid>

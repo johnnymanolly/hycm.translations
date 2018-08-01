@@ -1,0 +1,77 @@
+<style>
+    .ag-ltr .ag-header-cell-resize{
+        background: #a59c95;
+        width: 2px
+    }
+    .angucomplete-dropdown {
+        width: 300px;
+    }
+</style>
+<div class="row col-xs-12">
+    <div class="col-sm-2" style="width: 230px;">
+        <div class="input-group filter">
+            <scriptr-autocomplete
+                    id="translationFilter"
+                    placeholder="Filter by page name"
+                    pause="400"
+                    class=""
+                    search-fields="page"
+                    title-field="page"
+                    description-field="type"
+                    minlength="0"
+                    text-no-results="No results"
+                    text-searching="Searching..."
+                    api="hycm/api/getFilters"
+                    transport='https'
+                    on-format-data="vm.onFilterFormatData"
+                    selected-object="vm.onTranslationfilterSet"
+                    input-class="form-control form-control-small">
+            </scriptr-autocomplete>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="input-group filter">
+            <scriptr-autocomplete
+                    id="translationFilter"
+                    placeholder="Filter by status"
+                    pause="400"
+                    class=""
+                    search-fields="key"
+                    title-field="key"
+                    minlength="0"
+                    text-no-results="No results"
+                    text-searching="Searching..."
+                    local-data="vm.statusFilter"
+                    selected-object="vm.onStatusFilterSet"
+                    input-class="form-control form-control-small">
+            </scriptr-autocomplete>
+        </div>
+    </div>
+</div>
+<scriptr-grid columns-definition='vm.listCols'
+              api='hycm/api/getTranslations'
+              enable-delete-row='vm.isAdmin'
+              user='vm.user'
+              allow-to-edit="vm.isTranslator"
+              admin='admin'
+              pagination="true"
+              enable-import="false"
+              row-model-type='infinite'
+              enable-add-row='vm.enableAddAllowed'
+              cell-editable='true'
+              suppress-filter='true'
+              row-height="30"
+              grid-height='calc(100vh - 146px)'
+              enable-client-side-filter='true'
+              enable-col-resize="true"
+              default-cell-renderer="vm.defaultCellRenderer"
+              enable-server-side-filter='true'
+              enable-client-side-sorting='true'
+              enable-server-side-sorting='true'
+              row-model-selection='multiple'
+              pagination-page-size='50'
+              on-cell-clicked='vm.manageItemsSelectionChanged'
+              on-format-data="vm.onGridFormatData"
+              transport='https'>
+</scriptr-grid>
+

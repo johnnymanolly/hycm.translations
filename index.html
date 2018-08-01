@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>HYCM - Translation</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="/UIComponents/layout/frontend/components/header/header.css">
+    <link rel="stylesheet" href="/UIComponents/layout/frontend/components/menu/menu.css">
+    <link rel="stylesheet" href="/UIComponents/dashboard/frontend/components/grid/grid.css">
+    <link href="/UIComponents/dashboard/frontend/components/list/angucomplete.alt.css" rel="stylesheet">
+    <link rel="stylesheet" href="/hycm/css/styles.css">
+
+    <!-- load fonts -->
+    <script src="//use.fontawesome.com/cb4ba0acea.js"></script>
+    <link href="//fonts.googleapis.com/css?family=Raleway:600,800|Source+Sans+Pro:300,400,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+
+    <!-- JQUERY Material  To use jQuery, simply ensure it is loaded before the angular.js file. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <!-- Libraries -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
+    <script src="https://unpkg.com/xlsx-style@0.8.13/dist/xlsx.full.min.js"></script>
+    <script src="/hycm/login/widgets/authorization.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-cookies.js"></script>
+    <script src="//cdn.rawgit.com/gdi2290/angular-websocket/v1.0.9/angular-websocket.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.4.0.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ag-grid/12.0.0/ag-grid.js?ignore=notused36"></script>
+    <script src="/UIComponents/dashboard/frontend/components/list/angucomplete.alt.js"></script>
+
+    <script src="/UIComponents/layout/frontend/components/module.js"></script>
+    <script src="/UIComponents/layout/frontend/components/menu/menu.js"></script>
+    <script src="/UIComponents/layout/frontend/components/header/header.js"></script>
+    <script src="/UIComponents/dashboard/frontend/components/grid/grid.js"></script>
+    <script src="/UIComponents/dashboard/frontend/components/list/autocomplete.js"></script>
+    <script src="/UIComponents/httpProvider.js"></script>
+    <script src="/UIComponents/wsProvider.js"></script>
+
+    <script src="/hycm/app/module.js"></script>
+    <script  src="/hycm/app/config.js"></script>
+    <script src="/hycm/app/appConfig.js"></script>
+    <script src="/hycm/app/controller.js"></script>
+
+</head>
+
+<script type="text/javascript">
+    var authorization  = $.scriptr.authorization(
+        {
+            onTokenValid: function(){ },
+            loginPage:"/hycm/login.html"
+        }
+    );
+</script>
+
+<script>
+    var underscore = angular.module('underscore', []);
+    underscore.factory('_', ['$window', function($window) {
+        return $window._; // assumes underscore has already been loaded on the page
+    }]);
+
+</script>
+
+<body ng-app="myApp" ng-controller="mainCtrl as vm">
+<header-top logged-in="true" user="vm.user" header-items="vm.headerItems" on-header-item-click="vm.onHeaderItemClick"></header-top>
+<div>
+    <main>
+        <!--menu user="vm.userInfo" class="menu-wrap" on-menu-item-click="vm.onMenuItemClick" menu-items="vm.menuItems"></menu-->
+        <section>
+            <div class="page-content">
+                <ng-view></ng-view>
+            </div>
+        </section>
+    </main>
+</div>
+</body>
+</html>
